@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  --color-nebula: #0B0B1A;
+  --color-bio-green: #39FF14;
+  --color-electric-cyan: #00FFFF;
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl;
+  }
+}
+
+body {
+  background-color: var(--color-nebula);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar hiding */
+::-webkit-scrollbar {
+  display: none;
+}
