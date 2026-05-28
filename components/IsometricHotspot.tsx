@@ -23,11 +23,11 @@ export default function IsometricHotspot({ top, left, color = '#39FF14', pulse =
             onMouseLeave={() => setIsActive(false)}
             onClick={onClick}
         >
-            <div className="relative flex items-center justify-center -translate-x-1/2 -translate-y-1/2 cursor-pointer">
+            <div className="relative flex items-center justify-center -translate-x-1/2 -translate-y-1/2 cursor-pointer w-14 h-14 md:w-16 md:h-16">
 
                 {/* Marcador Físico HUD (El "Anillo" que late hiper-visible) */}
                 <div
-                    className="relative w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-transform duration-[400ms] group-hover:scale-[1.2]"
+                    className="relative w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-transform duration-[400ms] lg:group-hover:scale-[1.15]"
                     style={{
                         backgroundColor: `${color}40`,
                         border: `2px solid ${color}`,
@@ -51,7 +51,7 @@ export default function IsometricHotspot({ top, left, color = '#39FF14', pulse =
 
                     {/* Núcleo Central Opaco e Hiper Brillante */}
                     <div
-                        className="relative z-10 w-3 h-3 md:w-4 md:h-4 rounded-full transition-transform duration-[400ms] ease-out group-hover:scale-[1.5]"
+                        className="relative z-10 w-3 h-3 md:w-4 md:h-4 rounded-full transition-transform duration-[400ms] ease-out lg:group-hover:scale-[1.35]"
                         style={{ backgroundColor: color, boxShadow: `0 0 20px ${color}, 0 0 5px white` }}
                     ></div>
                 </div>

@@ -25,6 +25,8 @@ const hotspots = [
         description: 'Entorno de Living Soil con volumen ideal para microbiología activa.',
         top: '65%',
         left: '70%',
+        mobileTop: '73%',
+        mobileLeft: '50%',
         color: '#39FF14',
     },
     {
@@ -33,6 +35,8 @@ const hotspots = [
         description: 'Espectro lumínico óptimo para desarrollo vegetativo y floración.',
         top: '30%',
         left: '20%',
+        mobileTop: '25%',
+        mobileLeft: '50%',
         color: '#00FFFF',
     },
     {
@@ -41,6 +45,8 @@ const hotspots = [
         description: 'Nutrición biológica y enmiendas minerales seleccionadas.',
         top: '35%',
         left: '50%',
+        mobileTop: '48%',
+        mobileLeft: '48%',
         color: '#FF00FF',
     }
 ];
@@ -55,6 +61,19 @@ export default function CasaAtrium() {
     const [loadPercent, setLoadPercent] = useState(0);
     const [isAssetsLoaded, setIsAssetsLoaded] = useState(false);
     
+    // Mobile viewport state & interactive details active state
+    const [isMobile, setIsMobile] = useState(false);
+    const [activeHotspotId, setActiveHotspotId] = useState<string | null>(null);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     // Modern state for added product toast notifications
     const [toastMessage, setToastMessage] = useState<string | null>(null);
 
@@ -409,17 +428,19 @@ export default function CasaAtrium() {
                 {/* --- SECTION 5: ARMA TU SALA CBKR (75%) --- */}
                 <div className="scrolly-sec-build-room fixed inset-0 flex items-center justify-center z-20 pointer-events-none opacity-0">
                     <div className="w-full max-w-4xl mx-auto px-6 text-center">
-                        <span className="text-[10px] tracking-[0.35em] text-[#39FF14] font-black uppercase mb-4 block anim-child">005. CONFIGURACIÓN</span>
-                        <h2 className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-none mb-6 uppercase anim-child">
-                            ARMA TU SALA CBKR
-                        </h2>
-                        <p className="text-white/70 text-base md:text-xl max-w-2xl mx-auto leading-relaxed mb-8 font-medium anim-child">
-                            Tenemos todo lo necesario para montar tu sistema de suelo vivo.
-                        </p>
-                        <div className="flex justify-center items-center gap-4 anim-child">
-                            <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-[#39FF14]" />
-                            <span className="text-xs font-bold text-white/50 tracking-[0.3em] uppercase">Ecosistema Regenerativo</span>
-                            <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-[#39FF14]" />
+                        <div className="bg-black/60 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                            <span className="text-[10px] tracking-[0.35em] text-[#39FF14] font-black uppercase mb-4 block anim-child">005. CONFIGURACIÓN</span>
+                            <h2 className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-none mb-6 uppercase anim-child">
+                                ARMA TU SALA CBKR
+                            </h2>
+                            <p className="text-white/80 text-base md:text-xl max-w-2xl mx-auto leading-relaxed mb-8 font-medium anim-child">
+                                Tenemos todo lo necesario para montar tu sistema de suelo vivo.
+                            </p>
+                            <div className="flex justify-center items-center gap-4 anim-child">
+                                <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-[#39FF14]" />
+                                <span className="text-xs font-bold text-white/50 tracking-[0.3em] uppercase">Ecosistema Regenerativo</span>
+                                <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-[#39FF14]" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -432,39 +453,108 @@ export default function CasaAtrium() {
                 className="fixed bottom-0 left-0 z-30 bg-[#0B0B1A] text-white w-full h-screen overflow-hidden border-t border-white/10 shadow-[0_-30px_70px_rgba(0,0,0,0.95)]"
                 style={{ opacity: 0, pointerEvents: 'none' }}
             >
-                <IsometricScene backgroundImage="/TIENDA4K.jpg" featherEdges={true} interactiveHover={true}>
+                <IsometricScene backgroundImage={isMobile ? "/isometricoresponsive.jpeg" : "/TIENDA4K.jpg"} featherEdges={true} interactiveHover={false}>
                     {hotspots.map((spot) => (
                         <IsometricHotspot
                             key={spot.id}
-                            top={spot.top}
-                            left={spot.left}
+                            top={isMobile ? (spot.mobileTop || spot.top) : spot.top}
+                            left={isMobile ? (spot.mobileLeft || spot.left) : spot.left}
                             color={spot.color}
                             pulse={true}
+                            onClick={() => {
+                                if (isMobile) {
+                                    setActiveHotspotId(spot.id);
+                                }
+                            }}
                         >
-                            <div className="flex flex-col gap-2 relative text-left">
-                                <h2 className="text-xl tracking-wide font-black uppercase flex items-center gap-3" style={{ color: spot.color }}>
-                                    {spot.name}
-                                </h2>
-                                <p className="text-white/80 text-sm leading-relaxed mb-3">
-                                    {spot.description}
-                                </p>
-                                <button 
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        setToastMessage(`Añadido: ${spot.name}`);
-                                        setTimeout(() => setToastMessage(null), 3000);
-                                    }}
-                                    className="w-full py-3 bg-white/5 hover:bg-white/20 transition-all rounded-xl border border-white/10 text-white text-xs font-bold uppercase tracking-widest text-center flex items-center justify-center gap-2 group backdrop-blur-sm shadow-[inset_0_1px_3px_rgba(255,255,255,0.1)] cursor-pointer"
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                    </svg>
-                                    Agregar al Carrito
-                                </button>
-                            </div>
+                            {!isMobile && (
+                                <div className="flex flex-col gap-2 relative text-left">
+                                    <h2 className="text-xl tracking-wide font-black uppercase flex items-center gap-3" style={{ color: spot.color }}>
+                                        {spot.name}
+                                    </h2>
+                                    <p className="text-white/80 text-sm leading-relaxed mb-3">
+                                        {spot.description}
+                                    </p>
+                                    <button 
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            setToastMessage(`Añadido: ${spot.name}`);
+                                            setTimeout(() => setToastMessage(null), 3000);
+                                        }}
+                                        className="w-full py-3 bg-white/5 hover:bg-white/20 transition-all rounded-xl border border-white/10 text-white text-xs font-bold uppercase tracking-widest text-center flex items-center justify-center gap-2 group backdrop-blur-sm shadow-[inset_0_1px_3px_rgba(255,255,255,0.1)] cursor-pointer"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                        </svg>
+                                        Agregar al Carrito
+                                    </button>
+                                </div>
+                            )}
                         </IsometricHotspot>
                     ))}
                 </IsometricScene>
+
+                {/* Bottom Sheet Drawer for Mobile Hotspots (Hi-Fi Touch UX) */}
+                <AnimatePresence>
+                    {isMobile && activeHotspotId && (() => {
+                        const spot = hotspots.find(s => s.id === activeHotspotId);
+                        if (!spot) return null;
+                        return (
+                            <>
+                                {/* Translucent backdrop filter overlay */}
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm pointer-events-auto"
+                                    onClick={() => setActiveHotspotId(null)}
+                                />
+                                {/* Slide-up panel */}
+                                <motion.div
+                                    initial={{ y: '100%' }}
+                                    animate={{ y: 0 }}
+                                    exit={{ y: '100%' }}
+                                    transition={{ type: 'spring', damping: 25, stiffness: 220 }}
+                                    className="fixed bottom-0 left-0 right-0 z-50 bg-[#0B0B1A]/95 backdrop-blur-3xl border-t border-white/10 rounded-t-3xl p-6 flex flex-col gap-4 text-left shadow-[0_-20px_50px_rgba(0,0,0,0.9)] pb-12 pointer-events-auto"
+                                >
+                                    {/* Handle bar decor */}
+                                    <div className="w-12 h-1 bg-white/20 rounded-full mx-auto mb-2" />
+                                    
+                                    <div className="flex justify-between items-start">
+                                        <h2 className="text-2xl tracking-wide font-black uppercase flex items-center gap-3" style={{ color: spot.color }}>
+                                            {spot.name}
+                                        </h2>
+                                        <button 
+                                            onClick={() => setActiveHotspotId(null)}
+                                            className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white"
+                                        >
+                                            ✕
+                                        </button>
+                                    </div>
+                                    
+                                    <p className="text-white/70 text-sm leading-relaxed mb-4">
+                                        {spot.description}
+                                    </p>
+                                    
+                                    <button 
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            setActiveHotspotId(null);
+                                            setToastMessage(`Añadido: ${spot.name}`);
+                                            setTimeout(() => setToastMessage(null), 3000);
+                                        }}
+                                        className="w-full py-4 bg-[#39FF14] hover:bg-[#39FF14]/90 transition-all rounded-2xl text-black text-xs font-black uppercase tracking-widest text-center flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(57,255,20,0.3)] cursor-pointer"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                        </svg>
+                                        Agregar al Carrito
+                                    </button>
+                                </motion.div>
+                            </>
+                        );
+                    })()}
+                </AnimatePresence>
 
                 {/* High fidelity toast notification banner */}
                 <AnimatePresence>
@@ -474,12 +564,12 @@ export default function CasaAtrium() {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 20, scale: 0.95 }}
                             transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-                            className="fixed bottom-10 left-10 z-50 px-6 py-4 bg-black/90 border border-[#39FF14] text-white rounded-2xl shadow-[0_10px_45px_rgba(57,255,20,0.25)] backdrop-blur-2xl flex items-center gap-4 font-sans border-l-4"
+                            className="fixed bottom-10 left-6 right-6 md:left-10 md:right-auto z-50 px-6 py-4 bg-black/90 border border-[#39FF14] text-white rounded-2xl shadow-[0_10px_45px_rgba(57,255,20,0.25)] backdrop-blur-2xl flex items-center gap-4 font-sans border-l-4"
                         >
                             <div className="w-8 h-8 rounded-full bg-[#39FF14]/20 flex items-center justify-center text-[#39FF14] font-black text-sm">
                                 ✓
                             </div>
-                            <div className="flex flex-col">
+                            <div className="flex flex-col text-left">
                                 <span className="text-[10px] tracking-[0.2em] font-bold uppercase text-[#39FF14]">Sistema CBKR</span>
                                 <span className="text-sm font-bold tracking-wide uppercase text-white/90">{toastMessage}</span>
                             </div>
@@ -489,7 +579,7 @@ export default function CasaAtrium() {
             </div>
 
             {/* Diagnostic Console Float Panel */}
-            <div className="fixed top-4 right-4 z-[999] bg-black/90 border border-[#39FF14]/40 p-4 rounded-xl text-[10px] font-mono text-[#39FF14] w-80 shadow-[0_0_30px_rgba(57,255,20,0.15)] pointer-events-none select-none flex flex-col gap-1">
+            <div className="fixed top-4 right-4 z-[999] hidden md:flex bg-black/90 border border-[#39FF14]/40 p-4 rounded-xl text-[10px] font-mono text-[#39FF14] w-80 shadow-[0_0_30px_rgba(57,255,20,0.15)] pointer-events-none select-none flex flex-col gap-1">
                 <div className="font-bold text-[#39FF14] mb-2 uppercase border-b border-[#39FF14]/20 pb-1 flex justify-between">
                     <span>CBKR Diagnostic OS</span>
                     <span className="animate-pulse">● LIVE</span>
