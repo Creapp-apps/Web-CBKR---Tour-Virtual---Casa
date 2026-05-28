@@ -1,121 +1,185 @@
 'use client';
 
-import { useRef, useCallback } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const FRAME_COUNT = 192;
+const IMAGE_SCALE = 1.15; // Fullscreen cover + crop watermark/edges
+
 interface CanvasSequenceProps {
-    images: HTMLImageElement[];
-    isLoaded: boolean;
+    onProgress?: (percent: number) => void;
+    onComplete?: () => void;
 }
 
-export default function CanvasSequence({ images, isLoaded }: CanvasSequenceProps) {
+export default function CanvasSequence({ onProgress, onComplete }: CanvasSequenceProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const renderFrameRef = useRef<(index: number) => void>(() => { });
+    const containerRef = useRef<HTMLDivElement>(null);
 
-    useGSAP(() => {
-        if (!isLoaded || images.length === 0 || !canvasRef.current) return;
+    const [frames, setFrames] = useState<HTMLImageElement[]>([]);
+    const [isLoaded, setIsLoaded] = useState(false);
 
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
+    const framesRef = useRef<HTMLImageElement[]>([]);
+    const currentFrameRef = useRef<number>(-1);
 
-        // Helper: object-fit cover logic
-        renderFrameRef.current = (index: number) => {
-            const img = images[index];
-            if (!img || !img.complete) return;
+    // Helpers to pad frame numbers (e.g., 0001)
+    const padZero = (num: number, size = 4) => {
+        let s = num + '';
+        while (s.length < size) s = '0' + s;
+        return s;
+    };
 
-            const cw = window.innerWidth;
-            const ch = window.innerHeight;
+    // 1. Preload image frames inside useEffect
+    useEffect(() => {
+        let loadedCount = 0;
+        const loadedFrames: HTMLImageElement[] = [];
 
-            // Update canvas logical size to match exact physical pixels without blur
-            if (canvas.width !== cw || canvas.height !== ch) {
-                canvas.width = cw;
-                canvas.height = ch;
+        const checkProgress = () => {
+            const progress = Math.floor((loadedCount / FRAME_COUNT) * 100);
+            if (onProgress) onProgress(progress);
+
+            if (loadedCount === FRAME_COUNT) {
+                framesRef.current = loadedFrames;
+                setFrames(loadedFrames);
+                setIsLoaded(true);
+                if (onComplete) {
+                    setTimeout(() => onComplete(), 500);
+                }
             }
-
-            const iw = img.width;
-            const ih = img.height;
-
-            const canvasRatio = cw / ch;
-            const imgRatio = iw / ih;
-
-            let drawWidth = cw;
-            let drawHeight = ch;
-            let offsetX = 0;
-            let offsetY = 0;
-
-            if (canvasRatio > imgRatio) {
-                drawWidth = cw;
-                drawHeight = cw / imgRatio;
-                offsetY = (ch - drawHeight) / 2;
-            } else {
-                drawHeight = ch;
-                drawWidth = ch * imgRatio;
-                offsetX = (cw - drawWidth) / 2;
-            }
-
-            ctx.clearRect(0, 0, cw, ch);
-            ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
         };
 
-        // Draw Initial Frame
-        renderFrameRef.current(0);
+        for (let i = 1; i <= FRAME_COUNT; i++) {
+            const img = new Image();
+            img.src = `/frames/frame_${padZero(i)}.jpg`;
 
-        const sequenceState = { frame: 0 };
+            img.onload = () => {
+                loadedFrames[i - 1] = img;
+                loadedCount++;
+                checkProgress();
+            };
 
-        // 1. Sequence Mapping Trigger
+            img.onerror = () => {
+                console.error(`Error loading frame_${padZero(i)}.jpg`);
+                // Still increment to prevent getting stuck
+                loadedCount++;
+                checkProgress();
+            };
+        }
+    }, [onProgress, onComplete]);
+
+    // Helper function to draw a frame into the Canvas
+    const drawFrame = (index: number) => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d', { alpha: false });
+        if (!ctx) return;
+
+        const img = framesRef.current[index];
+        if (!img) return;
+
+        const cw = canvas.width;
+        const ch = canvas.height;
+        const iw = img.naturalWidth;
+        const ih = img.naturalHeight;
+
+        // Cover calculations with physical scale adjustment
+        const scale = Math.max(cw / iw, ch / ih) * IMAGE_SCALE;
+        const dw = iw * scale;
+        const dh = ih * scale;
+        const dx = (cw - dw) / 2;
+        const dy = (ch - dh) / 2;
+
+        ctx.fillStyle = '#05050A';
+        ctx.fillRect(0, 0, cw, ch);
+        ctx.drawImage(img, dx, dy, dw, dh);
+    };
+
+    // Handle resizing keeping physical pixel ratio
+    const handleResize = () => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
+
+        // Render current active frame if loaded
+        if (currentFrameRef.current >= 0) {
+            drawFrame(currentFrameRef.current);
+        }
+    };
+
+    // 2. Setup GSAP ScrollTrigger Sequence Scrubbing
+    useGSAP(() => {
+        if (!isLoaded || !canvasRef.current || !containerRef.current) return;
+
+        const canvas = canvasRef.current;
+
+        // Initial setup for sizing
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
+        // Draw initial frame
+        currentFrameRef.current = 0;
+        drawFrame(0);
+
+        // Bind frames to global scroll container progress
+        const FRAME_SPEED = 1.4; // Matches v3 accelerated scroll speed for video sequence
+
         ScrollTrigger.create({
             trigger: '.scrollytelling-layer',
             start: 'top top',
             end: 'bottom bottom',
-            scrub: 0.1, // Smooth scrubbing
+            scrub: true,
             onUpdate: (self) => {
-                // Map 0-1 progress to 0-(frames.length-1)
-                const frameIndex = Math.floor(self.progress * (images.length - 1));
+                const accelerated = Math.min(self.progress * FRAME_SPEED, 1);
+                const frameIndex = Math.min(Math.floor(accelerated * (FRAME_COUNT - 1)), FRAME_COUNT - 1);
 
-                // Only draw if frame is different to save CPU
-                if (sequenceState.frame !== frameIndex) {
-                    sequenceState.frame = frameIndex;
-                    requestAnimationFrame(() => renderFrameRef.current(frameIndex));
-                }
-            },
-        });
-
-        // 2. Opacity and Blur Reveal Trigger
-        gsap.fromTo(canvas,
-            { opacity: 0, filter: 'blur(12px)' },
-            {
-                opacity: 1,
-                filter: 'blur(0px)',
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: '.scrollytelling-layer',
-                    start: 'top top',
-                    end: 'top -100%', // Fades in smoothly over the first 100vh of scrolling
-                    scrub: true,
+                if (frameIndex !== currentFrameRef.current) {
+                    currentFrameRef.current = frameIndex;
+                    requestAnimationFrame(() => drawFrame(frameIndex));
                 }
             }
-        );
+        });
 
-        const handleResize = () => {
-            requestAnimationFrame(() => renderFrameRef.current(sequenceState.frame));
-        };
+        // Cinematic Fade Out canvas at the end of the scroll trigger (85% → 100% progress)
+        // Uses progress-based control for exact timing alignment with the page's atrium fade-in.
+        ScrollTrigger.create({
+            trigger: '.scrollytelling-layer',
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: true,
+            onUpdate: (self) => {
+                const p = self.progress;
+                if (p >= 0.85) {
+                    const fadeOut = 1 - ((p - 0.85) / 0.15); // 1 → 0 from 85% to 100%
+                    canvas.style.opacity = Math.max(0, fadeOut).toString();
+                    if (fadeOut <= 0) canvas.style.pointerEvents = 'none';
+                } else {
+                    canvas.style.opacity = '1';
+                }
+            }
+        });
 
-        window.addEventListener('resize', handleResize);
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-
-    }, [isLoaded, images]);
+    }, { scope: containerRef, dependencies: [isLoaded] });
 
     return (
-        <canvas
-            ref={canvasRef}
-            className="fixed inset-0 w-full h-full z-0 pointer-events-none"
-        />
+        <div ref={containerRef} className="absolute inset-0 w-full h-full pointer-events-none z-0">
+            <canvas
+                ref={canvasRef}
+                className="fixed inset-0 w-full h-full block object-cover z-0 pointer-events-none transition-opacity duration-500"
+                style={{
+                    width: '100vw',
+                    height: '100vh',
+                }}
+            />
+        </div>
     );
 }

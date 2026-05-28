@@ -16,7 +16,7 @@ export function useFramePreloader(frameCount: number, basePath: string) {
         for (let i = 1; i <= frameCount; i++) {
             const img = new Image();
             const paddedIndex = i.toString().padStart(4, '0');
-            img.src = `${basePath}/frame_${paddedIndex}.webp`;
+            img.src = `${basePath}/frame_${paddedIndex}.jpg`;
 
             const onImageLoad = () => {
                 loadedCount++;
