@@ -8,7 +8,7 @@ const products = [
         discount: '- 10%',
         price: '$145,000',
         tags: ['Ecosistema Listo', 'Popular'],
-        color: 'from-[#39FF14]/20'
+        color: 'from-brand-cream/15'
     },
     {
         id: 2,
@@ -17,7 +17,7 @@ const products = [
         discount: '- 10%',
         price: '$320,000',
         tags: ['Para Expertos', 'Gran Volumen'],
-        color: 'from-[#00FFFF]/20'
+        color: 'from-cyan-500/15'
     },
     {
         id: 3,
@@ -53,7 +53,7 @@ const products = [
         discount: '- 10%',
         price: '$95,000',
         tags: ['Mantenimiento'],
-        color: 'from-[#39FF14]/20'
+        color: 'from-brand-cream/15'
     }
 ];
 
@@ -62,19 +62,19 @@ export default function ProductsGrid() {
         <section id="tienda" className="w-full min-h-screen bg-transparent py-32 px-6 md:px-12 relative z-20">
             {/* Banner de Promos */}
             <div className="container mx-auto max-w-5xl mb-24">
-                <div className="glass-card flex flex-col md:flex-row justify-between items-center gap-8 bg-gradient-to-r from-black/80 to-[#39FF14]/10 border-[#39FF14]/30">
+                <div className="glass-card flex flex-col md:flex-row justify-between items-center gap-8 bg-gradient-to-r from-black/80 to-brand-cream/5 border-white/10">
                     <div className="text-center md:text-left">
                         <h3 className="text-3xl font-bold text-white mb-2">30% OFF</h3>
                         <p className="text-white/70">Abonando en efectivo o transferencia.</p>
                     </div>
                     <div className="hidden md:block w-px h-16 bg-white/20"></div>
                     <div className="text-center md:text-left">
-                        <h3 className="text-3xl font-bold text-[#00FFFF] mb-2">6 Cuotas</h3>
+                        <h3 className="text-3xl font-bold text-cyan-400 mb-2">6 Cuotas</h3>
                         <p className="text-white/70">Sin interés con todas las tarjetas.</p>
                     </div>
                     <div className="hidden md:block w-px h-16 bg-white/20"></div>
                     <div className="text-center md:text-left">
-                        <h3 className="text-3xl font-bold text-[#39FF14] mb-2">Envío Gratis</h3>
+                        <h3 className="text-3xl font-bold text-brand-cream mb-2">Envío Gratis</h3>
                         <p className="text-white/70">En CABA a partir de $200K.</p>
                     </div>
                 </div>
@@ -86,7 +86,7 @@ export default function ProductsGrid() {
                         <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter mb-4">Materiales</h2>
                         <p className="text-white/50 text-xl tracking-widest uppercase">Encuentra tu kit ideal</p>
                     </div>
-                    <button className="hidden md:block text-[#39FF14] hover:text-white border-b border-[#39FF14] hover:border-white transition-all pb-1 tracking-widest uppercase text-sm">
+                    <button className="hidden md:block text-brand-cream hover:text-white border-b border-brand-cream/40 hover:border-white transition-all pb-1 tracking-widest uppercase text-sm">
                         Ver todos los productos
                     </button>
                 </div>
@@ -96,7 +96,7 @@ export default function ProductsGrid() {
                         <div key={product.id} className={`group glass-card relative overflow-hidden flex flex-col border-white/5 hover:border-white/20 transition-all duration-500 hover:transform hover:-translate-y-2 cursor-pointer bg-gradient-to-br ${product.color} to-transparent`}>
 
                             {product.discount && (
-                                <div className="absolute top-4 right-4 bg-[#39FF14] text-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                                <div className="absolute top-4 right-4 bg-brand-cream text-brand-gray text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                                     {product.discount}
                                 </div>
                             )}
@@ -121,8 +121,8 @@ export default function ProductsGrid() {
                                 </div>
 
                                 <div className="mt-auto flex justify-between items-center">
-                                    <span className="text-2xl font-mono font-bold text-[#00FFFF]">{product.price}</span>
-                                    <button className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#39FF14] group-hover:text-black transition-colors border border-white/20 group-hover:border-[#39FF14]">
+                                    <span className="text-2xl font-mono font-bold text-cyan-400">{product.price}</span>
+                                    <button className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-brand-cream group-hover:text-brand-gray transition-colors border border-white/20 group-hover:border-brand-cream">
                                         +
                                     </button>
                                 </div>
@@ -131,7 +131,7 @@ export default function ProductsGrid() {
                     ))}
                 </div>
 
-                <button className="md:hidden w-full mt-12 py-4 border border-[#39FF14] text-[#39FF14] rounded-full text-sm uppercase tracking-widest text-center hover:bg-[#39FF14] hover:text-black transition-all">
+                <button className="md:hidden w-full mt-12 py-4 border border-brand-cream text-brand-cream rounded-full text-sm uppercase tracking-widest text-center hover:bg-brand-cream hover:text-brand-gray transition-all">
                     Ver todos los productos
                 </button>
             </div>

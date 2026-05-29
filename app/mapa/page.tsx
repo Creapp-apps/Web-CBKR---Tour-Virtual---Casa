@@ -27,9 +27,9 @@ export default function CasaMap() {
                     <UniverseBackground />
                 </div>
 
-                <IsometricHotspot top="58.8112%" left="50.5645%" color="#39FF14" pulse={true}>
+                <IsometricHotspot top="58.8112%" left="50.5645%" color="#F5F2EB" pulse={true}>
                     <div className="flex flex-col gap-2 relative">
-                        <h2 className="text-[#39FF14] text-xl tracking-widest font-black uppercase flex items-center gap-3">
+                        <h2 className="text-brand-cream text-xl tracking-widest font-black uppercase flex items-center gap-3">
                             Sala de Cultivo
                         </h2>
                         <p className="text-white/80 text-sm leading-relaxed mb-2">
@@ -38,9 +38,9 @@ export default function CasaMap() {
 
                         <button
                             onClick={() => cinematicNavigate('/tienda')}
-                            className="w-full py-3 bg-[#39FF14]/10 hover:bg-[#39FF14]/30 transition-all rounded-xl border border-[#39FF14]/40 text-white text-xs font-bold uppercase tracking-widest text-center flex items-center justify-center gap-2 group backdrop-blur-md shadow-[inset_0_0_10px_rgba(57,255,20,0.2)]"
+                            className="w-full py-3 bg-brand-cream/10 hover:bg-brand-cream/30 transition-all rounded-xl border border-brand-cream/40 text-white text-xs font-bold uppercase tracking-widest text-center flex items-center justify-center gap-2 group backdrop-blur-md shadow-[inset_0_0_10px_rgba(255,255,255,0.05)]"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#39FF14] group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-brand-cream group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
                             </svg>
                             Entrar a la Tienda

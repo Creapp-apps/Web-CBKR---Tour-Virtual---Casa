@@ -24,7 +24,7 @@ export default function ParticleBackground() {
         let particles: Particle[] = [];
         let animationFrameId: number;
 
-        const colors = ['#39FF14', '#00FFFF', '#FFFFFF']; // Neon Green, Cyan, White
+        const colors = ['#e3e3e3', '#a5a5b5', '#FFFFFF']; // Brand Cream, Gray, White
 
         const resize = () => {
             canvas.width = window.innerWidth;

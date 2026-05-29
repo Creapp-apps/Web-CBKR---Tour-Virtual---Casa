@@ -34,10 +34,10 @@ export default function MethodManualSection() {
             
                 {/* Left Column: Premium 3D Book Presentation */}
                 <div className="lg:col-span-5 flex justify-center items-center anim-child perspective-[1500px]">
-                    <div className="relative group w-[220px] h-[300px] md:w-[260px] md:h-[360px] preserve-3d transition-transform duration-1000 ease-out hover:rotate-y-[-25deg] hover:rotate-x-[10deg] shadow-[0_30px_100px_rgba(57,255,20,0.1)] hover:shadow-[0_45px_120px_rgba(57,255,20,0.2)] rounded-r-xl">
+                    <div className="relative group w-[220px] h-[300px] md:w-[260px] md:h-[360px] preserve-3d transition-transform duration-1000 ease-out hover:rotate-y-[-25deg] hover:rotate-x-[10deg] shadow-[0_30px_100px_rgba(255,255,255,0.02)] hover:shadow-[0_45px_120px_rgba(255,255,255,0.04)] rounded-r-xl">
                         
                         {/* Floating Bioluminescent Particle Effects Behind Book */}
-                        <div className="absolute inset-0 bg-[#39FF14]/10 rounded-xl blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-700 -z-10" />
+                        <div className="absolute inset-0 bg-brand-cream/10 rounded-xl blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-700 -z-10" />
                         
                         {/* Book Spine (Lomo del libro en 3D) */}
                         <div className="absolute top-0 left-0 w-[40px] h-full bg-neutral-950 border-r border-white/10 origin-left rotate-y-[-90deg] translate-z-0 rounded-l-md flex flex-col justify-between py-8 px-2 text-white/30 text-[8px] font-mono select-none uppercase tracking-widest leading-none">
@@ -53,10 +53,10 @@ export default function MethodManualSection() {
                             <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none" />
                             
                             {/* Golden Technical Accent Line */}
-                            <div className="w-8 h-[2px] bg-[#39FF14] mb-4" />
+                            <div className="w-8 h-[2px] bg-brand-cream mb-4" />
                             
                             <div>
-                                <span className="text-[9px] font-mono tracking-[0.25em] text-[#39FF14] uppercase font-bold block mb-2">
+                                <span className="text-[9px] font-mono tracking-[0.25em] text-brand-cream/80 uppercase font-bold block mb-2">
                                     GUÍA MAESTRA
                                 </span>
                                 <h3 className="text-2xl md:text-3xl font-black text-white leading-none tracking-tight uppercase mb-3">
@@ -69,10 +69,10 @@ export default function MethodManualSection() {
 
                             {/* Immersive technical wireframe graphic in middle */}
                             <div className="relative w-full h-20 md:h-24 my-4 flex items-center justify-center">
-                                <div className="absolute w-20 h-20 rounded-full border border-dashed border-[#39FF14]/30 animate-spin" style={{ animationDuration: '20s' }} />
+                                <div className="absolute w-20 h-20 rounded-full border border-dashed border-brand-cream/30 animate-spin" style={{ animationDuration: '20s' }} />
                                 <div className="absolute w-14 h-14 rounded-full border border-white/5" />
                                 {/* SVG plant core wireframe */}
-                                <svg className="w-10 h-10 text-[#39FF14]/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg className="w-10 h-10 text-brand-cream/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
                                 </svg>
                             </div>
@@ -82,7 +82,7 @@ export default function MethodManualSection() {
                                     <span className="text-[8px] text-white/30 uppercase block font-mono">EDICIÓN ESPAÑOL</span>
                                     <span className="text-[10px] text-white/60 font-mono tracking-widest">v3.0.4 - 2026</span>
                                 </div>
-                                <span className="text-[9px] bg-[#39FF14]/10 border border-[#39FF14]/20 text-[#39FF14] px-2 py-0.5 rounded font-mono font-bold">
+                                <span className="text-[9px] bg-brand-cream/10 border border-brand-cream/20 text-brand-cream px-2 py-0.5 rounded font-mono font-bold">
                                     PDF
                                 </span>
                             </div>
@@ -94,7 +94,7 @@ export default function MethodManualSection() {
                 <div className="lg:col-span-7 flex flex-col justify-center text-left">
                     
                     <div className="anim-child mb-4">
-                        <span className="text-[10px] tracking-[0.3em] text-[#39FF14] font-bold uppercase mb-2 block">
+                        <span className="text-[10px] tracking-[0.3em] text-brand-cream/80 font-bold uppercase mb-2 block">
                             DESCARGA DE RECURSO
                         </span>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-white uppercase leading-none">
@@ -109,7 +109,7 @@ export default function MethodManualSection() {
                     {/* Keypoints list */}
                     <div className="anim-child grid grid-cols-2 gap-3 md:gap-4 mb-8">
                         <div className="flex items-center gap-3 bg-white/5 border border-white/5 p-3 rounded-xl hover:border-white/10 transition-colors">
-                            <div className="w-8 h-8 rounded-lg bg-[#39FF14]/10 flex items-center justify-center text-[#39FF14] flex-shrink-0">
+                            <div className="w-8 h-8 rounded-lg bg-brand-cream/10 flex items-center justify-center text-brand-cream flex-shrink-0">
                                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -120,7 +120,7 @@ export default function MethodManualSection() {
                             </div>
                         </div>
                         <div className="flex items-center gap-3 bg-white/5 border border-white/5 p-3 rounded-xl hover:border-white/10 transition-colors">
-                            <div className="w-8 h-8 rounded-lg bg-[#39FF14]/10 flex items-center justify-center text-[#39FF14] flex-shrink-0">
+                            <div className="w-8 h-8 rounded-lg bg-brand-cream/10 flex items-center justify-center text-brand-cream flex-shrink-0">
                                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -131,7 +131,7 @@ export default function MethodManualSection() {
                             </div>
                         </div>
                         <div className="flex items-center gap-3 bg-white/5 border border-white/5 p-3 rounded-xl hover:border-white/10 transition-colors">
-                            <div className="w-8 h-8 rounded-lg bg-[#39FF14]/10 flex items-center justify-center text-[#39FF14] flex-shrink-0">
+                            <div className="w-8 h-8 rounded-lg bg-brand-cream/10 flex items-center justify-center text-brand-cream flex-shrink-0">
                                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -142,7 +142,7 @@ export default function MethodManualSection() {
                             </div>
                         </div>
                         <div className="flex items-center gap-3 bg-white/5 border border-white/5 p-3 rounded-xl hover:border-white/10 transition-colors">
-                            <div className="w-8 h-8 rounded-lg bg-[#39FF14]/10 flex items-center justify-center text-[#39FF14] flex-shrink-0">
+                            <div className="w-8 h-8 rounded-lg bg-brand-cream/10 flex items-center justify-center text-brand-cream flex-shrink-0">
                                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -158,19 +158,19 @@ export default function MethodManualSection() {
                     <div className="anim-child flex flex-col md:flex-row gap-4 items-start md:items-center">
                         <button
                             onClick={handleDownload}
-                            className={`relative overflow-hidden group px-6 md:px-8 py-4 rounded-xl border border-[#39FF14]/40 font-bold uppercase tracking-widest text-xs transition-all duration-500 cursor-pointer flex items-center gap-3 shadow-[0_0_30px_rgba(57,255,20,0.1)] hover:shadow-[0_0_40px_rgba(57,255,20,0.25)] ${
-                                isDownloading ? 'bg-black text-[#39FF14] border-[#39FF14]/60' : 'bg-[#39FF14] text-black hover:bg-black hover:text-[#39FF14]'
+                            className={`relative overflow-hidden group px-6 md:px-8 py-4 rounded-xl border border-brand-cream/40 font-bold uppercase tracking-widest text-xs transition-all duration-500 cursor-pointer flex items-center gap-3 shadow-[0_0_30px_rgba(255,255,255,0.02)] hover:shadow-[0_0_40px_rgba(255,255,255,0.05)] ${
+                                isDownloading ? 'bg-black text-brand-cream border-brand-cream/60' : 'bg-brand-cream text-brand-gray hover:bg-black hover:text-brand-cream'
                             }`}
                         >
                             {/* Progress Bar background overlay */}
                             {isDownloading && (
                                 <div 
-                                    className="absolute inset-y-0 left-0 bg-[#39FF14]/10 transition-all duration-300 ease-out" 
+                                    className="absolute inset-y-0 left-0 bg-brand-cream/10 transition-all duration-300 ease-out" 
                                     style={{ width: `${downloadProgress}%` }}
                                 />
                             )}
 
-                            <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 ${isDownloading ? 'animate-bounce text-[#39FF14]' : 'group-hover:translate-y-0.5 transition-transform'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 ${isDownloading ? 'animate-bounce text-brand-cream' : 'group-hover:translate-y-0.5 transition-transform'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                             </svg>
 

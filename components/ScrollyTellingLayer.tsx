@@ -77,7 +77,7 @@ export default function ScrollyTellingLayer() {
                         <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 drop-shadow-2xl mb-4 uppercase">
                             cbkr.
                         </h1>
-                        <p className="text-xl md:text-3xl text-[#39FF14] tracking-[0.3em] uppercase font-light drop-shadow-[0_0_10px_rgba(57,255,20,0.8)] max-w-3xl mx-auto px-4">
+                        <p className="text-xl md:text-3xl text-brand-cream tracking-[0.3em] uppercase font-light drop-shadow-[0_0_10px_rgba(255,255,255,0.05)] max-w-3xl mx-auto px-4">
                             Suelo vivo, cultivo natural y sin químicos
                         </p>
                     </div>
@@ -96,8 +96,8 @@ export default function ScrollyTellingLayer() {
                 {/* ---------------- SCENE 2: ECOSISTEMAS (CAMAS) ---------------- */}
                 <div className="scene-ecosistemas absolute inset-0 flex flex-col md:flex-row items-center justify-center md:justify-between px-6 md:px-[10%] opacity-0 translate-y-24 gap-8 md:gap-0 mt-20 md:mt-0">
 
-                    <div className="glass-card max-w-md pointer-events-auto border-[#39FF14]/30 shadow-[0_0_40px_rgba(57,255,20,0.15)] relative z-40 w-full mb-8 md:mb-0">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#39FF14]">Ecosistemas Listos</h2>
+                    <div className="glass-card max-w-md pointer-events-auto border-brand-cream/30 shadow-[0_0_40px_rgba(255,255,255,0.05)] relative z-40 w-full mb-8 md:mb-0">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-cream">Ecosistemas Listos</h2>
                         <p className="text-white/90 leading-relaxed text-lg">
                             Nuestros Kits Living Soil, desde macetas Bunker de 50L hasta camas de cultivo de 700L, emulan el suelo del bosque. Solo agrega agua, el ecosistema se encarga del resto.
                         </p>
@@ -155,12 +155,12 @@ export default function ScrollyTellingLayer() {
 
                 {/* ---------------- SCENE 4: CTA FINAL ---------------- */}
                 <div className="scene-footer absolute inset-0 flex items-center justify-center px-6 opacity-0 translate-y-24">
-                    <div className="glass-card max-w-2xl w-full text-center pointer-events-auto bg-black/60 shadow-[0_0_50px_rgba(57,255,20,0.2)] flex flex-col items-center py-12">
+                    <div className="glass-card max-w-2xl w-full text-center pointer-events-auto bg-black/60 shadow-[0_0_50px_rgba(255,255,255,0.02)] flex flex-col items-center py-12">
                         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white uppercase tracking-wider">Tu Cultivo Vivo</h2>
                         <p className="text-white/80 text-xl mb-10 max-w-xl mx-auto">
                             Todo lo que necesitas para iniciar tu viaje hacia la agricultura regenerativa. Respeto por la tierra, resultados extraordinarios.
                         </p>
-                        <button className="px-10 py-4 rounded-full bg-[#39FF14] text-black font-bold text-lg hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(57,255,20,0.5)]">
+                        <button className="px-10 py-4 rounded-full bg-brand-cream text-brand-gray font-bold text-lg hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.05)]">
                             Descubrir Productos
                         </button>
                     </div>

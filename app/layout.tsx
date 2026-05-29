@@ -24,7 +24,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="es" className="antialiased selection:bg-[#39FF14] selection:text-black">
+        <html lang="es" className="antialiased selection:bg-brand-cream selection:text-brand-gray">
             <body
                 className={`${inter.variable} ${playfair.variable} font-sans bg-[#0B0B1A] text-white overflow-x-hidden`}
             >

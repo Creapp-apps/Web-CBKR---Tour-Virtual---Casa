@@ -30,8 +30,8 @@ export default function LibrarySection() {
             id: 'science',
             title: 'Bibliografía Científica',
             subtitle: 'Estudios, ensayos y fundamentos académicos del suelo vivo.',
-            accentColor: 'text-[#39FF14]',
-            glowColor: 'group-hover:border-[#39FF14]/40 group-hover:shadow-[0_0_30px_rgba(57,255,20,0.1)]',
+            accentColor: 'text-brand-cream',
+            glowColor: 'group-hover:border-brand-cream/40 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.02)]',
             icon: BookOpen,
             resources: [
                 {
@@ -134,7 +134,7 @@ export default function LibrarySection() {
             
             {/* Header Conceptual */}
             <div className="text-center mb-8 anim-child">
-                <span className="text-[10px] tracking-[0.3em] text-[#39FF14] font-bold uppercase mb-2 block flex items-center justify-center gap-1.5">
+                <span className="text-[10px] tracking-[0.3em] text-brand-cream font-bold uppercase mb-2 block flex items-center justify-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5" /> BIBLIOTECA DE CONTENIDOS
                 </span>
                 <h2 className="text-3xl md:text-4xl font-black tracking-tight text-white uppercase leading-none">
@@ -218,7 +218,7 @@ export default function LibrarySection() {
 
             {/* Footer de Biblioteca */}
             <div className="text-center anim-child mt-4 flex items-center justify-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14] animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-cream animate-pulse" />
                 <p className="text-[9px] text-white/40 tracking-[0.25em] uppercase font-bold">
                     BIBLIOTECA ABIERTA Y EN CONSTANTE EXPANSIÓN ORGÁNICA
                 </p>

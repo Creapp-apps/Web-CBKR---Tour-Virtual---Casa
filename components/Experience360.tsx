@@ -13,7 +13,7 @@ const hotspots = [
         description: 'Entorno de Living Soil con volumen ideal para microbiología activa.',
         top: '65%',
         left: '70%',
-        color: '#39FF14',
+        color: '#F5F2EB',
     },
     {
         id: 'luces',
@@ -21,7 +21,7 @@ const hotspots = [
         description: 'Espectro lumínico óptimo para desarrollo vegetativo y floración.',
         top: '30%',
         left: '20%',
-        color: '#00FFFF',
+        color: '#ffffff',
     },
     {
         id: 'estantes',
@@ -29,7 +29,7 @@ const hotspots = [
         description: 'Nutrición biológica y enmiendas minerales seleccionadas.',
         top: '35%',
         left: '50%',
-        color: '#FF00FF',
+        color: '#38bdf8',
     }
 ];
 
@@ -127,14 +127,13 @@ export default function Experience360() {
                 ))}
             </div>
 
-            {/* Cartel Inferior */}
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 pointer-events-none text-center z-10 w-[90%] max-w-md">
-                <div className="bg-[#39FF14]/10 px-6 py-4 rounded-full text-white/90 shadow-[0_0_40px_rgba(57,255,20,0.2)] border border-[#39FF14]/50 flex gap-4 items-center justify-center backdrop-blur-xl">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 animate-pulse text-[#39FF14]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="bg-brand-cream/10 px-6 py-4 rounded-full text-white/90 shadow-[0_0_40px_rgba(255,255,255,0.05)] border border-brand-cream/50 flex gap-4 items-center justify-center backdrop-blur-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 animate-pulse text-brand-cream" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
                     </svg>
                     <div className="flex flex-col text-left">
-                        <span className="font-bold tracking-wide text-sm text-[#39FF14]">TIENDA ISOMÉTRICA ACTIVA</span>
+                        <span className="font-bold tracking-wide text-sm text-brand-cream">TIENDA ISOMÉTRICA ACTIVA</span>
                         <span className="text-xs text-white/80">Pasa el mouse sobre el cuarto para revelar los productos.</span>
                     </div>
                 </div>

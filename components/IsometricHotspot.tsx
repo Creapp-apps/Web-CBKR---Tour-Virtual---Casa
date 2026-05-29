@@ -12,7 +12,7 @@ interface HotspotProps {
     children?: React.ReactNode;
 }
 
-export default function IsometricHotspot({ top, left, color = '#39FF14', pulse = true, onClick, badge, children }: HotspotProps) {
+export default function IsometricHotspot({ top, left, color = '#F5F2EB', pulse = true, onClick, badge, children }: HotspotProps) {
     const [isActive, setIsActive] = useState(false);
 
     return (

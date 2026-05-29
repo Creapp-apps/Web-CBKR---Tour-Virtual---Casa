@@ -55,7 +55,7 @@ export default function StatsCounter({ value, suffix = '', decimals = 0, label }
         <div ref={containerRef} className="flex flex-col items-center justify-center p-4">
             <div className="text-5xl md:text-8xl font-black tracking-tighter text-white flex items-baseline">
                 <span ref={numberRef} className="font-black">0</span>
-                {suffix && <span className="text-[#39FF14] ml-1 font-bold text-3xl md:text-5xl">{suffix}</span>}
+                {suffix && <span className="text-brand-cream ml-1 font-bold text-3xl md:text-5xl">{suffix}</span>}
             </div>
             <span className="text-[10px] md:text-xs tracking-[0.3em] font-semibold text-white/40 uppercase mt-4 text-center">
                 {label}

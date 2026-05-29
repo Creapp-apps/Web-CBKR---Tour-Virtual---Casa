@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-playfair);
+  --font-sans: "Myriad Pro", "Gotham", var(--font-inter), sans-serif;
+  --font-serif: "Times LT Std", "Times New Roman", Times, var(--font-playfair), serif;
   --font-mono: var(--font-geist-mono);
   
   --color-nebula: #0B0B1A;
-  --color-bio-green: #39FF14;
-  --color-electric-cyan: #00FFFF;
+  --color-bio-green: #e3e3e3;
+  --color-electric-cyan: #ffffff;
+  
+  --color-brand-gray: #292e35;
+  --color-brand-cream: #e3e3e3;
 }
 
 @layer utilities {

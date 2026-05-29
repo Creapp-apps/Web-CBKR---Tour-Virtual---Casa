@@ -12,7 +12,7 @@ const hotspots = [
         description: 'Entorno de Living Soil con volumen ideal para microbiología activa.',
         top: '65%',
         left: '70%',
-        color: '#39FF14',
+        color: '#F5F2EB',
     },
     {
         id: 'led-lights',
@@ -20,7 +20,7 @@ const hotspots = [
         description: 'Espectro lumínico óptimo para desarrollo vegetativo y floración.',
         top: '30%',
         left: '20%',
-        color: '#00FFFF',
+        color: '#ffffff',
     },
     {
         id: 'nutrients',
@@ -28,7 +28,7 @@ const hotspots = [
         description: 'Nutrición biológica y enmiendas minerales seleccionadas.',
         top: '35%',
         left: '50%',
-        color: '#FF00FF',
+        color: '#38bdf8',
     }
 ];
 
@@ -72,9 +72,9 @@ export default function StoreRoom() {
                 <div className="absolute top-6 left-6 z-50">
                     <button
                         onClick={() => cinematicNavigate('/')}
-                        className="flex items-center gap-2 px-6 py-3 rounded-full bg-black/60 hover:bg-black/90 border border-[#39FF14]/40 text-[#39FF14] backdrop-blur-xl transition-all duration-300 group shadow-[0_0_20px_rgba(57,255,20,0.1)] justify-center font-bold tracking-widest text-xs uppercase"
+                        className="flex items-center gap-2 px-6 py-3 rounded-full bg-black/60 hover:bg-black/90 border border-brand-cream/40 text-brand-cream backdrop-blur-xl transition-all duration-300 group shadow-[0_0_20px_rgba(255,255,255,0.05)] justify-center font-bold tracking-widest text-xs uppercase"
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:-translate-x-1 transition-transform text-[#39FF14]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:-translate-x-1 transition-transform text-brand-cream" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
                         </svg>
                         Volver a La Casa

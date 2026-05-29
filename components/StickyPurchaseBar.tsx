@@ -35,12 +35,12 @@ export default function StickyPurchaseBar() {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: 80, opacity: 0 }}
                     transition={{ type: 'spring', stiffness: 260, damping: 25 }}
-                    className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-4xl h-16 rounded-full bg-black/80 backdrop-blur-xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.5),_0_0_20px_rgba(57,255,20,0.08)] z-50 px-4 md:px-8 flex items-center justify-between overflow-hidden"
+                    className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-4xl h-16 rounded-full bg-black/80 backdrop-blur-xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.5),_0_0_20px_rgba(255,255,255,0.03)] z-50 px-4 md:px-8 flex items-center justify-between overflow-hidden"
                 >
                     {/* Left: CBKR Branding & Info */}
                     <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-black to-neutral-900 border border-white/10 flex items-center justify-center">
-                            <span className="text-[#39FF14] text-xs font-black select-none">★</span>
+                            <span className="text-brand-cream text-xs font-black select-none">★</span>
                         </div>
                         <div className="hidden sm:block text-left">
                             <span className="text-[10px] text-white/50 font-mono tracking-widest uppercase block leading-none mb-0.5">
@@ -54,8 +54,8 @@ export default function StickyPurchaseBar() {
 
                     {/* Middle: Highlight or Promo */}
                     <div className="hidden lg:flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-[#39FF14] animate-pulse" />
-                        <span className="text-[10px] text-[#39FF14] tracking-widest uppercase font-bold">
+                        <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                        <span className="text-[10px] text-cyan-400 tracking-widest uppercase font-bold">
                             Envío Gratis en Kits Bunker
                         </span>
                     </div>
@@ -66,14 +66,14 @@ export default function StickyPurchaseBar() {
                             onClick={() => scrollToSection('arma-tu-sala')}
                             className="px-4 py-2.5 rounded-full border border-white/10 hover:border-white/20 text-white/80 hover:text-white transition-all text-[9.5px] uppercase font-bold tracking-widest cursor-pointer bg-white/5 hover:bg-white/10"
                         >
-                            Diseñar Sala
+                            Armá tu bunker
                         </button>
                         
                         <a
                             href="https://cbkr.tiendanube.com/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-5 py-2.5 rounded-full bg-[#39FF14] hover:bg-white text-black transition-all text-[9.5px] uppercase font-black tracking-widest shadow-[0_0_20px_rgba(57,255,20,0.2)] hover:shadow-none cursor-pointer flex items-center gap-1.5"
+                            className="px-5 py-2.5 rounded-full bg-brand-cream hover:bg-white text-brand-gray transition-all text-[9.5px] uppercase font-black tracking-widest shadow-[0_0_20px_rgba(255,255,255,0.05)] hover:shadow-none cursor-pointer flex items-center gap-1.5"
                         >
                             <span>Tienda Oficial</span>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">

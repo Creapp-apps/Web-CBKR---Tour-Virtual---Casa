@@ -80,7 +80,7 @@ export default function IsometricScene({ backgroundImage, children, featherEdges
             {/* Exploration Hint for Mobile Users */}
             {isMobileImage && (
                 <div className="absolute top-6 left-1/2 -translate-x-1/2 z-40 bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 pointer-events-none animate-pulse">
-                    <span className="w-2 h-2 rounded-full bg-[#39FF14]" />
+                    <span className="w-2 h-2 rounded-full bg-brand-cream" />
                     <span className="text-[10px] font-bold tracking-[0.2em] text-white uppercase">Desliza para explorar sala</span>
                 </div>
             )}

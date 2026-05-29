@@ -7,9 +7,9 @@ const assemblySteps = [
         id: 1,
         title: '1. Cama Geotextil',
         desc: 'Contenedor poroso de alta aireación que promueve la auto-poda radicular.',
-        color: 'from-[#39FF14]/20 to-transparent',
-        borderColor: 'border-[#39FF14]/30',
-        textColor: 'text-[#39FF14]'
+        color: 'from-brand-cream/15 to-transparent',
+        borderColor: 'border-brand-cream/30',
+        textColor: 'text-brand-cream'
     },
     {
         id: 2,
@@ -59,7 +59,7 @@ export default function BunkerAssemblyAnimation() {
                 
                 {/* Tech Blueprint circles */}
                 <div className="absolute w-64 h-64 border border-white/[0.02] rounded-full animate-pulse" />
-                <div className="absolute w-40 h-40 border border-[#39FF14]/5 rounded-full" />
+                <div className="absolute w-40 h-40 border border-brand-cream/5 rounded-full" />
 
                 {/* 3D Isometric Layers Assembly */}
                 <div className="relative w-44 h-36 flex flex-col-reverse justify-center items-center transform rotate-x-[60deg] rotate-z-[45deg] scale-90 translate-y-2">
@@ -68,12 +68,12 @@ export default function BunkerAssemblyAnimation() {
                     <div 
                         className={`absolute w-36 h-24 rounded-lg border-2 bg-gradient-to-br transition-all duration-700 ease-out flex items-center justify-center ${
                             activeStep >= 1 
-                                ? 'translate-y-0 opacity-100 scale-100 border-[#39FF14] bg-[#39FF14]/10 shadow-[0_0_20px_rgba(57,255,20,0.2)]' 
+                                ? 'translate-y-0 opacity-100 scale-100 border-brand-cream bg-brand-cream/10 shadow-[0_0_20px_rgba(255,255,255,0.03)]' 
                                 : 'translate-y-16 opacity-0 scale-95 border-white/10 bg-transparent'
                         }`}
                         style={{ zIndex: 10, transform: 'translateZ(0px)' }}
                     >
-                        <span className="text-[9px] font-mono tracking-widest uppercase text-[#39FF14]/60 font-black">BUNKER</span>
+                        <span className="text-[9px] font-mono tracking-widest uppercase text-brand-cream/60 font-black">BUNKER</span>
                     </div>
 
                     {/* Layer 2: Bio-Drainage */}
