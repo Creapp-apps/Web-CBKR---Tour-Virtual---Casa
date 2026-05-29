@@ -51,7 +51,7 @@ export default function CasaMap() {
                 {/* Botón Flotante para regresar al Atrio */}
                 <div className="absolute top-6 left-6 z-50">
                     <button
-                        onClick={() => cinematicNavigate('/casa')}
+                        onClick={() => cinematicNavigate('/')}
                         className="flex items-center gap-2 px-6 py-3 rounded-full bg-black/60 hover:bg-black/90 border border-white/20 text-white backdrop-blur-xl transition-all duration-300 group shadow-[0_0_20px_rgba(0,0,0,0.5)] justify-center font-bold tracking-widest text-xs uppercase"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:-translate-x-1 transition-transform text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">

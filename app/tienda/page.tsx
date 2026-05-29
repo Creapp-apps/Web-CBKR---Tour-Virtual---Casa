@@ -71,7 +71,7 @@ export default function StoreRoom() {
 
                 <div className="absolute top-6 left-6 z-50">
                     <button
-                        onClick={() => cinematicNavigate('/casa')}
+                        onClick={() => cinematicNavigate('/')}
                         className="flex items-center gap-2 px-6 py-3 rounded-full bg-black/60 hover:bg-black/90 border border-[#39FF14]/40 text-[#39FF14] backdrop-blur-xl transition-all duration-300 group shadow-[0_0_20px_rgba(57,255,20,0.1)] justify-center font-bold tracking-widest text-xs uppercase"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:-translate-x-1 transition-transform text-[#39FF14]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
